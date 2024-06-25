@@ -171,6 +171,33 @@
   }
 
   /**
+   *  Skill toolkit
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const logoItems = document.querySelectorAll('.logo-item img');
+    const techSpan = document.querySelector('.tech');
+
+    logoItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        const logoItem = item.closest('.logo-item');
+        techSpan.classList.add('hidden');
+        setTimeout(() => {
+          techSpan.textContent = logoItem.getAttribute('data-tech');
+          techSpan.classList.remove('hidden');
+        }, 200);
+      });
+
+      item.addEventListener('mouseout', () => {
+        techSpan.classList.add('hidden');
+        setTimeout(() => {
+          techSpan.textContent = "";
+          techSpan.classList.remove('hidden');
+        }, 200);
+      });
+    });
+  });
+
+  /**
    * Porfolio isotope and filter
    */
   window.addEventListener('load', () => {
@@ -233,6 +260,7 @@
     }
   });
 
+  
   /**
    * Testimonials slider
    */

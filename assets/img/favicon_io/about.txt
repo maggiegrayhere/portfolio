@@ -1,6 +1,6 @@
 This favicon was generated using the following font:
 
-- Font Title: La Belle Aurore
-- Font Author: Copyright (c) 2010, Kimberly Geswein (kimberlygeswein.com kimberlygeswein@gmail.com)
-- Font Source: https://fonts.gstatic.com/s/labelleaurore/v20/RrQIbot8-mNYKnGNDkWlocovHeIIG-eFNVmULg.ttf
-- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
+- Font Title: Satisfy
+- Font Author: Copyright (c) 2011 by Font Diner, Inc. All rights reserved.
+- Font Source: https://fonts.gstatic.com/s/satisfy/v21/rP2Hp2yn6lkG50LoOZSCHBeHFl0.ttf
+- Font License: Apache License, version 2.0 (http://www.apache.org/licenses/LICENSE-2.0.html))
