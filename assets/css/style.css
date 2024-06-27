@@ -1123,11 +1123,125 @@ section {
 
 .btn-portfolio-link {
   border: none;
+  padding: 0;
+  background-color: transparent;
 }
 
 .btn-portfolio-link i {
-  font-size: 50px;
-  color: red;
+  font-size: 24px;
+}
+
+
+.portfolio-modal .modal-header{
+  color: var(--black);
+  display: block;
+  padding: 2rem 3rem 0 3rem;
+}
+
+.modal-header-container {
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-modal .modal-title {
+  font-weight: light;
+  font-size: 46px;
+  padding-top: 5rem;
+  padding-bottom: 0.2rem;
+}
+
+.portfolio-modal .swiper-slide img {
+  object-fit: contain;
+  max-height: 300px;
+  width: 100%;
+}
+
+.swiper-pagination {
+  position: relative;
+  margin-top: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--orange) !important;
+}
+
+.link-container {
+  display: flex;
+  align-items: center;
+}
+
+.link-container i {
+  font-size: 24px;
+  padding: 10px;
+  color: var(--pink);
+  height: 44px;
+  width: 44px;
+  background-color: #f2f3f5;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.link-container .portfolio-site-link {
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.link-container:hover i {
+  background-color: var(--blue);
+  color: var(--lightpink);
+}
+
+.link-container:hover .portfolio-site-link a {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.link-container {
+  display: flex;
+}
+
+.portfolio-modal .portfolio-site-link a {
+  font-size: 16px;
+  /* background: #eef0f2; */
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+
+.portfolio-modal h6 {
+  display: block;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--lightpink);
+  padding: 0 0 0.5rem 0;
+  margin-bottom: 10px;
+
+  /* color: #77828E; */
+  border-bottom: 1px solid var(--grey);
+}
+
+.portfolio-modal .card {
+  border: none;
+  width: 80%;
+  margin: 2rem auto 3rem auto;
+}
+
+.portfolio-modal h5 {
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--grey);
+  text-transform: uppercase;
+  padding-bottom: 0.2rem;
+}
+
+.portfolio-description {
+  margin: 1rem;
+  padding: 1rem;
 }
 
 /*--------------------------------------------------------------
