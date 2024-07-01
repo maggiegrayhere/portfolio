@@ -1,11 +1,8 @@
 <?php
 // Include PHPMailer classes
-// require_once '../../libs/PHPMailer/src/PHPMailer.php';
-// require_once '../../libs/PHPMailer/src/Exception.php';
-// require_once '../../libs/PHPMailer/src/SMTP.php';
-require_once '../vendor/PHPMailer-master/src/Exception.php';
-require_once '../vendor/PHPMailer-master/src/PHPMailer.php';
-require_once '../vendor/PHPMailer-master/src/SMTP.php';
+require_once './PHPMailer-master/src/PHPMailer.php';
+require_once './PHPMailer-master/src/Exception.php';
+require_once './PHPMailer-master/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -37,20 +34,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.hostinger.com'; // Set the SMTP server to send through
         $mail->SMTPAuth = true;
-        $mail->Username = 'hello@maggiegray.co.uk'; // SMTP username
-        $mail->Password = 'Mal1c3L0v35Banana5!'; // SMTP password
+        $mail->Username   = 'hello@maggiegray.co.uk';
+    $mail->Password   = 'Magg13Gray3ma1l!';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 465;
+        $mail->Port = 587;
+
+        // Enable verbose debug output
+        $mail->SMTPDebug = 2;
+        $mail->Debugoutput = 'error_log';
 
         // Recipients
         $mail->setFrom($email, $name);
-        $mail->addAddress('from@maggiegray.co.uk', 'Recipient Name'); // Add a recipient
+        $mail->addAddress('hello@maggiegray.co.uk');
+    $mail->addAddress('mag_owen@hotmail.com');
 
         // Content
         $mail->isHTML(true);
         $mail->Subject = $subject;
-        $mail->Body    = nl2br($message); // Convert newlines to <br> tags for HTML
-        $mail->AltBody = $message; // Plain text version
+        
+        // HTML Body
+        $mail->Body = 'Message: ' . nl2br($message) . '<br>' . 
+                      'Subject: ' . $subject . '<br>' . 
+                      'Name: ' . $name . '<br>' . 
+                      'Email Address: ' . $email;
+        
+        // Plain text body
+        $mail->AltBody = 'Message: ' . $message . "\n" . 
+                         'Subject: ' . $subject . "\n" . 
+                         'Name: ' . $name . "\n" . 
+                         'Email Address: ' . $email;
 
         $mail->send();
         echo json_encode(["message" => "Your message has been sent. Thank you!"]);

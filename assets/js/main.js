@@ -297,85 +297,49 @@
   new PureCounter();
 
   // Contact Mail
-  // const form = document.querySelector('#contact-form');
-
-  //   form.addEventListener('submit', event => {
-  //     event.preventDefault();
-
-  //     const name = document.querySelector('#name').value;
-  //     const email = document.querySelector('#email').value;
-  //     const subject = document.querySelector('#subject').value;
-  //     const message = document.querySelector('#message').value;
-
-  //     console.log('Name:', name);
-  //     console.log('Email:', email);
-  //     console.log('Subject:', subject);
-  //     console.log('Message:', message);
-
-  //     // Handle form submission via AJAX
-  //     const formData = new FormData(form);
-
-  //     fetch('./assets/php/sendEmail.php', {
-  //       method: 'POST',
-  //       body: formData,
-  //     })
-  //     .then(response => response.text())
-  //     .then(data => {
-  //       console.log('Success:', data);
-  //       document.querySelector('.sent-message').style.display = 'block';
-  //       form.reset();
-  //     })
-  //     .catch(error => {
-  //       console.error('Error:', error);
-  //       document.querySelector('.error-message').style.display = 'block';
-  //     });
-  //   });
-
   
-  const form = document.querySelector('.php-email-form');
-  const sentMessage = document.querySelector('.sent-message');
-  const errorMessage = document.querySelector('.error-message');
-  const loadingMessage = document.querySelector('.loading');
-
-  form.addEventListener('submit', function(event) {
+  document.getElementById('contact-form').addEventListener('submit', function (event) {
     event.preventDefault();
+    console.log('here1');
 
-    const formData = new FormData(form);
-
-    loadingMessage.style.display = 'block';
-    errorMessage.style.display = 'none';
-    sentMessage.style.display = 'none';
-
+    var formData = new FormData(this);
+    console.log('here2');
     fetch('./assets/php/sendEmail.php', {
-      method: 'POST',
-      body: formData
+        method: 'POST',
+        body: formData,
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok.');
-      }
-      return response.json();
-    })
-    .then(data => {
-      loadingMessage.style.display = 'none';
-      if (data.message === "Your message has been sent. Thank you!") {
-        sentMessage.style.display = 'block';
-        form.reset();
-      } else {
-        errorMessage.textContent = data.message;
-        errorMessage.style.display = 'block';
-      }
-    })
-    .catch(error => {
-      loadingMessage.style.display = 'none';
-      errorMessage.textContent = 'There was an error sending your message. Please try again later.';
-      errorMessage.style.display = 'block';
-      console.error('Error:', error);
-    });
-  });
-  
-  
-
+        .then(response => {
+          console.log(response);
+          console.log('here3');
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+          console.log('here4');
+          console.log(data);
+            if (data.status === 'success') {
+              console.log('here5');
+                document.querySelector('.sent-message').style.display = 'block';
+                document.querySelector('.error-msg').style.display = 'none';
+                document.querySelector('.sent-message').textContent = data.message;
+            } else {
+              console.log('here6');
+                document.querySelector('.error-msg').style.display = 'block';
+                document.querySelector('.sent-message').style.display = 'none';
+                document.querySelector('.error-msg').textContent = data.message;
+            }
+        })
+        .catch(error => {
+          console.log(error);
+            document.querySelector('.error-msg').style.display = 'block';
+            document.querySelector('.sent-message').style.display = 'none';
+            document.querySelector('.error-msg').textContent = 'Sorry, something went wrong. Please try again later.';
+        });
+        console.log('here7');
+});
+console.log('here8');
 
 
 })()
