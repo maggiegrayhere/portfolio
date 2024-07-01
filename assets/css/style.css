@@ -189,7 +189,6 @@ h6 {
   color: #45505b;
   padding: 10px 18px;
   margin-bottom: 8px;
-  transition: 0.3s;
   font-size: 15px;
   border-radius: 50px;
   background: #f2f3f5;
@@ -292,7 +291,7 @@ h6 {
 #hero {
   width: 100%;
   min-height: 100vh;
-  background: url("../img/hero-bg_optimized2.jpg") top right no-repeat;
+  background: url("../img/hero-bg-optimized.jpg") top right no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -445,9 +444,9 @@ h6 {
     line-height: 36px;
   }
 
-  .typed {
+  /* .typed {
     color: #18d26e;
-  }
+  } */
 
   #hero p {
     margin-top: 5px;
@@ -513,16 +512,11 @@ section {
   display: flex;
   margin: auto;
   min-height: 100vh;
-  width: 70%;
-  display: flex;
+  width: 80%;
   justify-content: center;
   align-items: center;
   padding: 40px;
   box-sizing: border-box;
-}
-
-.about .section-title p:first-of-type {
-  font-size: 20px;
 }
 
 .about p {
@@ -531,16 +525,24 @@ section {
   margin-bottom: 1.5rem;
 }
 
-@media (max-height: 600px) {
+@media (max-width: 600px) {
   .about {
     min-height: auto;
     padding: 40px 20px;
+    width: 90%;
+    margin: 0;
   }
 }
 
 @media (max-width: 768px) {
   .about {
     padding: 30px 15px;
+    margin: 0;
+  }
+
+  .about p {
+    font-size: 14px;
+    line-height: 1.4rem;
   }
 }
 
@@ -654,7 +656,6 @@ section {
 
 .download-cv a:hover {
   background-color: var(--blue);
-  /* border: 0.1px solid var(--blue); */
   color: #f2f3f5;
 }
 
@@ -721,12 +722,11 @@ section {
 }
 
 .portfolio-wrap {
-  box-shadow: 0px 10px 10px #e6e9ec;
+  box-shadow: 0 10px 10px #e6e9ec;
   border: 1px solid #e6e9ec;
 }
 
 .portfolio #portfolio-flters {
-  padding: 0;
   margin: 0 auto 25px auto;
   list-style: none;
   text-align: center;
