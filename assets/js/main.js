@@ -297,49 +297,44 @@
   new PureCounter();
 
   // Contact Mail
+
+  const sentMsg = document.querySelector('.sent-message');
+  const errorMsg = document.querySelector('.error-msg');
   
   document.getElementById('contact-form').addEventListener('submit', function (event) {
     event.preventDefault();
-    console.log('here1');
 
-    var formData = new FormData(this);
-    console.log('here2');
+    const formData = new FormData(this);
     fetch('./assets/php/sendEmail.php', {
         method: 'POST',
         body: formData,
     })
         .then(response => {
-          console.log(response);
-          console.log('here3');
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
             return response.json();
         })
         .then(data => {
-          console.log('here4');
-          console.log(data);
             if (data.status === 'success') {
-              console.log('here5');
-                document.querySelector('.sent-message').style.display = 'block';
-                document.querySelector('.error-msg').style.display = 'none';
-                document.querySelector('.sent-message').textContent = data.message;
+              sentMsg.style.display = 'block';
+              errorMsg.style.display = 'none';
+              sentMsg.textContent = data.message;
+
+              document.getElementById('contact-form').reset();
             } else {
-              console.log('here6');
-                document.querySelector('.error-msg').style.display = 'block';
-                document.querySelector('.sent-message').style.display = 'none';
-                document.querySelector('.error-msg').textContent = data.message;
+                errorMsg.style.display = 'block';
+                sentMsg.style.display = 'none';
+                errorMsg.textContent = data.message;
             }
         })
         .catch(error => {
           console.log(error);
-            document.querySelector('.error-msg').style.display = 'block';
-            document.querySelector('.sent-message').style.display = 'none';
-            document.querySelector('.error-msg').textContent = 'Sorry, something went wrong. Please try again later.';
+            errorMsg.style.display = 'block';
+            sentMsg.style.display = 'none';
+            errorMsg.textContent = 'Sorry, something went wrong. Please try again later.';
         });
-        console.log('here7');
 });
-console.log('here8');
 
 
 })()
